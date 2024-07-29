@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   strct.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/29 09:05:31 by ijaber            #+#    #+#             */
-/*   Updated: 2024/07/29 10:46:37 by ijaber           ###   ########.fr       */
+/*   Created: 2024/07/29 10:16:49 by ijaber            #+#    #+#             */
+/*   Updated: 2024/07/29 10:49:22 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#ifndef STRUCT_H
+# define STRUCT_H
 
-int	main(int ac, char **av)
+# include "pipex.h"
+
+typedef struct s_pipex
 {
-	t_pipex	pipex;
+	int		in_fd;
+	int		out_fd;
+	// int		here_doc;
+	int		is_invalid_infile;
+	char	**cmd_paths;
+	char	***cmd_args;
+	int		cmd_count;
+}			t_pipex;
 
-	init_pipex(pipex, av, ac);
-}
+#endif
