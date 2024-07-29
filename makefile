@@ -1,13 +1,13 @@
 NAME = pipex
 
-SRCS = $(addprefix srcs/,)
-OBJ =  $(SRCS:.c=.o)
+SRCS = $(addprefix srcs/, main.c)
+OBJ = $(SRCS:srcs/%.c=obj/%.o)
 
 INCLUDES = -Iincludes -I$(LIBFT_PATH)/includes
 
 CFLAGS = -Wextra -Werror -Wall
 
-LIBFT_PATH = ./Libft
+LIBFT_PATH = ./libft
 
 # Rules
 all: $(LIBFT_PATH)/libft.a $(NAME)
@@ -19,8 +19,8 @@ $(NAME): $(OBJ)
 $(LIBFT_PATH)/libft.a:
 	make -C $(LIBFT_PATH)
 
-.c.o:
-	cc $(CCFLAGS) $(INCLUDES) -c $< -o ${<:.c=.o}
+obj/%.o: srcs/%.c
+	 cc $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
 	rm -rf $(OBJ)
