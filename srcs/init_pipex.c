@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_pipex.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/29 09:05:31 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/14 00:38:33 by ijaber           ###   ########.fr       */
+/*   Created: 2024/08/14 00:30:48 by ijaber            #+#    #+#             */
+/*   Updated: 2024/08/14 00:33:11 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	main(int ac, char **av, char **envp)
+void	init_pipex(t_pipex *pipex)
 {
-	t_pipex	*pipex;
-
-	init_pipex(pipex);
-	check_args(ac, av, pipex);
-	parse_cmds(av, envp, pipex);
+	pipex->in_fd = 0;
+	pipex->out_fd = 0;
+	pipex->is_invalid_infile = 0;
+	pipex->cmd_paths = NULL;
+	pipex->av2 = NULL;
+	pipex->av3 = NULL;
 }
