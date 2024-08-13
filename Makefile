@@ -29,41 +29,52 @@ ALL_INCS += $(INCS_LIBFT)
 
 CCFLAGS = -Wall -Wextra -Werror
 
+MAKE_FLAGS		+=	--no-print-directory
+MAKE_FLAGS		+=	-C
+
 INCLUDES_OPT = -Iincludes -I$(LIBFT_PATH)/includes
 
 LIBFT_PATH = ./Libft
+
+# Colors
+RED	= "\033[0;31m"
+GREEN = "\033[0;32m"
+NO_COLOR = "\033[0m"
 
 # Rules
 all: $(LIBFT_PATH)/libft.a $(NAME)
 
 $(NAME): $(OBJ) $(OBJ_MAIN)
-	@make $(LIBFT_PATH)
+	@make $(MAKE_FLAGS) $(LIBFT_PATH)
 	@cc $(CFLAGS) $^ $(LIBFT_PATH)/libft.a -o $(NAME)
+	@echo $(GREEN) "making pipex .o files" $(NO_COLOR)
 
 $(LIBFT_PATH)/libft.a:
-	@make -C $(LIBFT_PATH)
+	@make $(MAKE_FLAGS) $(LIBFT_PATH)
 
 $(BONUS_NAME) : $(OBJ_B) $(OBJ) $(OBJ_MAIN_B)
-	@make $(LIBFT_PATH)
+	@make $(MAKE_FLAGS) $(LIBFT_PATH)
 	@cc $(CFLAGS) $^ $(LIBFT_PATH)/libft.a -o $(BONUS_NAME)
 
 bonus: $(LIBFT_PATH)/libft.a $(BONUS_NAME)
 
 obj/%.o: srcs/%.c
-	 cc $(CFLAGS) $(INCLUDES_OPT) -c $< -o $@
+	@cc $(CFLAGS) $(INCLUDES_OPT) -c $< -o $@
 
 norm:
 	norminette -R CheckForbiddenSourceHeader $(ALL_SRCS)
 	norminette -R CheckDefine $(ALL_INCS)
 
 clean:
-	rm -rf $(ALL_OBJS)
-	cd $(LIBFT_PATH) && make clean
+	@rm -rf $(ALL_OBJS)
+	@make $(MAKE_FLAGS) $(LIBFT_PATH) clean
+	@echo $(RED) "deleting pipex .o files" $(NO_COLOR)
 
 fclean: clean
-		rm -f $(NAME) $(BONUS_NAME)
-		cd $(LIBFT_PATH) && make fclean
-
+	@rm -f $(NAME) $(BONUS_NAME)
+	@echo $(RED) "deleting pipex" $(NO_COLOR)
+	@make $(MAKE_FLAGS) $(LIBFT_PATH) fclean
+		
 re: fclean all
 
 rb: re bonus
