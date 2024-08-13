@@ -1,6 +1,6 @@
 NAME = pipex
 
-SRCS = $(addprefix srcs/, parse_args.c)
+SRCS = $(addprefix srcs/, check_args.c errors.c)
 MAIN = $(addprefix srcs/, main.c)
 
 # SRCS_B = $(addprefix srcs_bonus/, )
@@ -37,15 +37,15 @@ LIBFT_PATH = ./Libft
 all: $(LIBFT_PATH)/libft.a $(NAME)
 
 $(NAME): $(OBJ) $(OBJ_MAIN)
-	make $(LIBFT_PATH)
-	cc $(CFLAGS) $^ $(LIBFT_PATH)/libft.a -o $(NAME)
+	@make $(LIBFT_PATH)
+	@cc $(CFLAGS) $^ $(LIBFT_PATH)/libft.a -o $(NAME)
 
 $(LIBFT_PATH)/libft.a:
-	make -C $(LIBFT_PATH)
+	@make -C $(LIBFT_PATH)
 
 $(BONUS_NAME) : $(OBJ_B) $(OBJ) $(OBJ_MAIN_B)
-	make $(LIBFT_PATH)
-	cc $(CFLAGS) $^ $(LIBFT_PATH)/libft.a -o $(BONUS_NAME)
+	@make $(LIBFT_PATH)
+	@cc $(CFLAGS) $^ $(LIBFT_PATH)/libft.a -o $(BONUS_NAME)
 
 bonus: $(LIBFT_PATH)/libft.a $(BONUS_NAME)
 

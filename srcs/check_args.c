@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_args.c                                       :+:      :+:    :+:   */
+/*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/29 09:37:13 by ijaber            #+#    #+#             */
-/*   Updated: 2024/07/29 12:39:06 by ijaber           ###   ########.fr       */
+/*   Created: 2024/08/13 03:52:29 by ijaber            #+#    #+#             */
+/*   Updated: 2024/08/13 04:18:21 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	**init_pipex(t_pipex pipex, char **av, int ac)
+void	check_args(int ac, char **av, t_pipex pipex)
 {
-	pipex.in_fd = open(av[1], O_WRONLY | O_CREAT);
-	pipex.out_fd = open(av[4], O_WRONLY | O_CREAT);
-	pipex.cmd_count = ac - 2;
+	if (ac != 4)
+		push_swap_error("Usage : ./pipex file1 cmd1 cmd2 file2");
+	if (access(av[1], R_OK || W_OK || X_OK) == -1)
+		push_swap_error("Permission denined on file1");
+	if (access(av[4], R_OK || W_OK || X_OK) == -1)
+		push_swap_error("Permission denined on file2");
 }

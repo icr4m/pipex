@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.h                                           :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/29 10:16:49 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/13 03:48:37 by ijaber           ###   ########.fr       */
+/*   Created: 2024/08/13 03:55:11 by ijaber            #+#    #+#             */
+/*   Updated: 2024/08/13 04:00:05 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
-# define STRUCT_H
+#include "pipex.h"
 
-# include "pipex.h"
-
-typedef struct s_pipex
+void	push_swap_error(char *error_message)
 {
-	int		in_fd;
-	int		out_fd;
-	// int		here_doc;
-	int		is_invalid_infile;
-	char	**cmd_paths;
-	char	***cmd_args;
-}			t_pipex;
-
-#endif
+	ft_printf("Error\n");
+	ft_printf("%s\n", error_message);
+	exit(EXIT_FAILURE);
+}

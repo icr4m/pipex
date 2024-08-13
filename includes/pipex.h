@@ -6,7 +6,7 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 09:06:42 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/13 03:10:52 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/08/13 04:23:56 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,11 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <unistd.h>
+
+// check args
+void	check_args(int ac, char **av, t_pipex pipex);
+
+// errors
+void	push_swap_error(char *error_message);
 
 #endif
