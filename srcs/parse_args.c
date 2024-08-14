@@ -6,7 +6,7 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 03:32:19 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/14 04:41:03 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/08/14 04:56:26 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static char	*find_command(char **multiple_path, char *av, t_pipex *pipex)
 		command = ft_strjoin(temp, av);
 		free(temp);
 		if (access(command, X_OK) != -1)
-			return (ft_strdup(command));
+			return (command);
 		free(command);
 		i++;
 	}
