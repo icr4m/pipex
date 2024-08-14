@@ -6,7 +6,7 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 09:06:42 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/14 02:06:18 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/08/14 02:59:44 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <unistd.h>
 
 # define INDEX_START 0
+# define INDEX_ARGV 1
+# define MIN_ARGC 5
 # define PATH_STR "PATH="
 # define PATH_AMOUNT 5
 # define SLASH_STR "/"
@@ -38,7 +40,7 @@ void	pipex_error_free(char *error_message, t_pipex *pipex);
 void	ft_free_tab(char **tab);
 
 // init pipex
-void	init_pipex(t_pipex *pipex);
+void	init_pipex(t_pipex *pipex, int ac);
 
 // parse cmds
 void	parse_cmds(char **av, char **envp, t_pipex *pipex);

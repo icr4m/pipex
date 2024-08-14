@@ -6,7 +6,7 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 18:45:00 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/14 02:13:15 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/08/14 02:55:08 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,17 @@ static char	*get_path(char *name, char **envp)
 		i++;
 	}
 	return (NULL);
+}
+
+static void	get_command(char **av, char **envp, t_pipex *pipex)
+{
+	size_t	i;
+
+	i = INDEX_START;
+	while (av[i + INDEX_ARGV] )
+	{
+		
+	}
 }
 
 void	parse_cmds(char **av, char **envp, t_pipex *pipex)
