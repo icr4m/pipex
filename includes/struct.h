@@ -6,7 +6,7 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 10:16:49 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/14 02:56:18 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/08/14 03:51:20 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ typedef struct s_pipex
 	int		out_fd;
 	// int		here_doc;
 	int		is_invalid_infile;
-	int		cmd_count;
-	char	**cmd_paths;
-	char	***args_paths;
+	size_t	cmd_count;
+	char	**cmd_full; // les bin/user/cat
+	char **cmd_paths;   // les /bin/user
+	char ***args_paths; // les "cat -e" "wc -l"
 }			t_pipex;
 
 #endif

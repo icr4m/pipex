@@ -6,7 +6,7 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 09:06:42 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/14 02:59:44 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/08/14 03:58:06 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ void	ft_free_tab(char **tab);
 
 // init pipex
 void	init_pipex(t_pipex *pipex, int ac);
+
+// parse args
+void	parse_args(t_pipex *pipex);
 
 // parse cmds
 void	parse_cmds(char **av, char **envp, t_pipex *pipex);
