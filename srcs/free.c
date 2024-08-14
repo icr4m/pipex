@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_args.c                                       :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/13 03:52:29 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/14 02:08:13 by ijaber           ###   ########.fr       */
+/*   Created: 2024/08/14 02:04:46 by ijaber            #+#    #+#             */
+/*   Updated: 2024/08/14 02:05:30 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	check_args(int ac, char **av, t_pipex *pipex)
+void	ft_free_tab(char **tab)
 {
-	if (ac != 5)
-		pipex_error("Usage : ./pipex file1 cmd1 cmd2 file2");
-	if (access(av[1], R_OK) == -1)
-		pipex_error("Permission denined on file1");
-	if (access(av[4], R_OK) == -1)
-		pipex_error("Permission denined on file2");
+	size_t	i;
+
+	i = INDEX_START;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
 }

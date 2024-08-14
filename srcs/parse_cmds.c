@@ -6,31 +6,30 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 18:45:00 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/14 00:26:49 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/08/14 02:13:15 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-static char	*find_command(char **multiple_path, char *av)
+static char	*find_command(char **multiple_path, char *av, t_pipex *pipex)
 {
-	int		i;
+	size_t	i;
 	char	*command;
+	char	*temp;
 
-	i = 0;
+	i = INDEX_START;
 	while (multiple_path[i])
 	{
-		command = ft_strjoin(multiple_path[i], "/");
-		free(multiple_path[i]);
-		command = ft_strjoin(command, av);
+		temp = ft_strjoin(multiple_path[i], "/");
+		command = ft_strjoin(temp, av);
+		free(temp);
 		if (access(command, X_OK) != -1)
-		{
-			ft_printf("command: %s\n", command);
 			return (command);
-		}
 		free(command);
 		i++;
 	}
+	pipex_error_free("Wrong command.", pipex);
 	return (NULL);
 }
 
@@ -53,7 +52,9 @@ void	parse_cmds(char **av, char **envp, t_pipex *pipex)
 	pipex->av2 = ft_split(av[2], SPACE_CHAR);
 	pipex->av3 = ft_split(av[3], SPACE_CHAR);
 	pipex->cmd_paths = ft_split(get_path(PATH_STR, envp), TWO_DOTS);
-	find_command(pipex->cmd_paths, pipex->av2[0]);
-	
-	find_command(pipex->cmd_paths, pipex->av3[0]);
+	pipex->cmd_2 = find_command(pipex->cmd_paths, pipex->av2[0], pipex);
+	pipex->cmd_3 = find_command(pipex->cmd_paths, pipex->av3[0], pipex);
+	ft_free_tab(pipex->av2);
+	ft_free_tab(pipex->av3);
+	ft_free_tab(pipex->cmd_paths);
 }

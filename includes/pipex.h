@@ -6,7 +6,7 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 09:06:42 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/14 00:38:19 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/08/14 02:06:18 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,11 @@
 void	check_args(int ac, char **av, t_pipex *pipex);
 
 // errors
-void	push_swap_error(char *error_message);
+void	pipex_error(char *error_message);
+void	pipex_error_free(char *error_message, t_pipex *pipex);
+
+// free
+void	ft_free_tab(char **tab);
 
 // init pipex
 void	init_pipex(t_pipex *pipex);

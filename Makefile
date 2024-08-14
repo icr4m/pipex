@@ -1,6 +1,6 @@
 NAME = pipex
 
-SRCS = $(addprefix srcs/, check_args.c errors.c parse_cmds.c init_pipex.c)
+SRCS = $(addprefix srcs/, check_args.c errors.c free.c parse_cmds.c init_pipex.c)
 MAIN = $(addprefix srcs/, main.c)
 
 # SRCS_B = $(addprefix srcs_bonus/, )
