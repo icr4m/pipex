@@ -6,8 +6,23 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 22:31:01 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/16 04:39:17 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/08/16 05:09:06 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	exec(void)
+#include "pipex.h"
+
+void	exec(t_pipex *pipex)
+{
+	pipe();
+	fork();
+	if (child)
+	{
+		dup2();
+		execve();
+	}
+	else
+	{
+		close();
+	}
+}
