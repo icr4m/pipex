@@ -6,7 +6,7 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 09:06:42 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/14 03:58:06 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/08/18 16:32:04 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../Libft/libft/includes/ft_printf.h"
 # include "../Libft/libft/includes/libft.h"
 # include "struct.h"
+# include <errno.h>
 # include <fcntl.h>
 # include <stdio.h>
 # include <unistd.h>
