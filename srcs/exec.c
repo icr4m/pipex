@@ -6,32 +6,49 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 22:31:01 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/19 07:03:12 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/08/19 07:59:39 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	child(void)
+static void	child(t_pipex *pipex, char **av, int *pipe_fd)
 {
 	int	fd;
-	fd = open_file()
+
+	fd = open(av[1], O_RDONLY);
+	if (fd == -1)
+		pipex_error_free("open failed", pipex);
+	dup2(fd, 0);
+	dup2(pipe_fd[1], 1);
+	close(pipe_fd[0]);
+	execve(pipex->cmd_full[0], pipex->args_paths[0], NULL);
 }
 
-void	parent(void)
+static void	parent(t_pipex *pipex, char **av, int *pipe_fd)
 {
+	int	fd;
+
+	fd = open(av[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
+	if (fd == -1)
+		pipex_error_free("open failed", pipex);
+	dup2(fd, 1);
+	dup2(pipe_fd[0], 0);
+	close(pipe_fd[1]);
+	execve(pipex->cmd_full[1], pipex->args_paths[1], NULL);
 }
 
-void	exec(t_pipex *pipex)
+void	exec(t_pipex *pipex, char **av)
 {
-	int		pipefd[2];
+	int		pipe_fd[2];
 	pid_t	pid;
 
-	if (pipe(pipefd) == -1)
-		pipex_error("pipe error");
+	if (pipe(pipe_fd) == -1)
+		pipex_error_free("pipe error", pipex);
 	pid = fork();
 	if (pid == -1)
-		pipex_error("fork error");
+		pipex_error_free("fork error", pipex);
 	else if (pid == 0)
-		child
+		child(pipex, av, pipe_fd);
+	parent(pipex, av, pipe_fd);
 }

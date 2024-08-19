@@ -1,6 +1,6 @@
 NAME = pipex
 
-SRCS = $(addprefix srcs/, check_args.c errors.c free.c parse_args.c parse_cmds.c init_pipex.c)
+SRCS = $(addprefix srcs/, check_args.c errors.c exec.c free.c init_pipex.c parse_args.c parse_cmds.c)
 MAIN = $(addprefix srcs/, main.c)
 
 # SRCS_B = $(addprefix srcs_bonus/, )
@@ -45,7 +45,6 @@ NO_COLOR = "\033[0m"
 all: $(LIBFT_PATH)/libft.a $(NAME)
 
 $(NAME): $(OBJ) $(OBJ_MAIN)
-	@make $(MAKE_FLAGS) $(LIBFT_PATH)
 	@cc $(CFLAGS) $^ $(LIBFT_PATH)/libft.a -o $(NAME)
 	@echo $(GREEN) "making pipex .o files" $(NO_COLOR)
 
@@ -67,16 +66,13 @@ norm:
 
 clean:
 	@rm -rf $(ALL_OBJS)
-	@make $(MAKE_FLAGS) $(LIBFT_PATH) clean
+	@make $(MAKE_FLAGS) $(LIBFT_PATH) fclean
 	@echo $(RED) "deleting pipex .o files" $(NO_COLOR)
 
 fclean: clean
 	@rm -f $(NAME) $(BONUS_NAME)
 	@echo $(RED) "deleting pipex" $(NO_COLOR)
-	@make $(MAKE_FLAGS) $(LIBFT_PATH) fclean
 		
 re: fclean all
 
 rb: re bonus
-
-all: $(NAME)

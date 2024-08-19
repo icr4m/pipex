@@ -1,6 +1,8 @@
 .gitignore
 *.txt
-pipex*
+pipex
+pipex3
 obj/
 in
 out
+*.sh
