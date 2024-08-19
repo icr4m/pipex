@@ -6,7 +6,7 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 09:06:42 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/19 13:50:33 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/08/19 17:07:17 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	exec(t_pipex *pipex, char **av);
 
 // free
 void	ft_free_tab(char **tab);
+void	ft_free_2d_tab(char ***tab);
 
 // init pipex
 void	init_pipex(t_pipex *pipex, int ac);

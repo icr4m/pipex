@@ -6,7 +6,7 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 03:32:19 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/19 11:06:47 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/08/19 16:46:24 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,14 @@ static char	*find_command(char **multiple_path, char *av, t_pipex *pipex)
 		temp = NULL;
 		command = NULL;
 		temp = ft_strjoin(multiple_path[i], "/");
+		if (!temp)
+			pipex_error_free("malloc failed", pipex);
 		command = ft_strjoin(temp, av);
+		if (!command)
+			pipex_error_free("malloc failed", pipex);
 		free(temp);
 		if (access(command, X_OK) != -1)
-		{
 			return (command);
-		}
 		free(command);
 		i++;
 	}
@@ -43,6 +45,8 @@ void	parse_args(t_pipex *pipex)
 
 	i = INDEX_START;
 	pipex->cmd_full = (char **)malloc(pipex->cmd_count * sizeof(char *));
+	if (!pipex->cmd_full)
+		pipex_error_free("malloc failed", pipex);
 	while (i < pipex->cmd_count)
 	{
 		pipex->cmd_full[i] = find_command(pipex->cmd_paths,
