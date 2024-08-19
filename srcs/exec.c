@@ -6,7 +6,7 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 22:31:01 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/19 14:31:40 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/08/19 15:09:57 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,5 @@ void	exec(t_pipex *pipex, char **av)
 		pipex_error_free("fork error", pipex);
 	else if (pid == 0)
 		child(pipex, av, pipe_fd);
-	else
-	{
-		parent(pipex, av, pipe_fd);
-	}
+	parent(pipex, av, pipe_fd);
 }
