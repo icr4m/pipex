@@ -6,7 +6,7 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 03:32:19 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/19 08:59:06 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/08/19 10:04:17 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	parse_args(t_pipex *pipex)
 	{
 		pipex->cmd_full[i] = find_command(pipex->cmd_paths,
 				pipex->args_paths[i][0], pipex);
-		ft_free_tab(pipex->args_paths[i]);
+		// ft_free_tab(pipex->args_paths[i]);
 		i++;
 	}
 }
