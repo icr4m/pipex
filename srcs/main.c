@@ -6,7 +6,7 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 09:05:31 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/19 08:18:56 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/08/19 13:20:20 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	main(int ac, char **av, char **envp)
 	t_pipex	pipex;
 
 	init_pipex(&pipex, ac);
-	check_args(ac, av, &pipex);
+	check_args(ac, av, &pipex	);
 	parse_cmds(av, envp, &pipex);
 	parse_args(&pipex);
 	exec(&pipex, av);
