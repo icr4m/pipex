@@ -6,7 +6,7 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 18:45:00 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/20 13:36:59 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/08/20 16:07:10 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ static void	get_command(char **av, char **envp, t_pipex *pipex)
 	while (i < pipex->cmd_count)
 	{
 		pipex->args_paths[i] = ft_split(av[i + 2], SPACE_CHAR);
+		if (!pipex->args_paths[i])
+			pipex_error_free("ft_split failed", pipex);
 		i++;
 	}
 }

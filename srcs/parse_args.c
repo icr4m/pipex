@@ -6,7 +6,7 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 03:32:19 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/19 16:46:24 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/08/20 14:32:22 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static char	*find_command(char **multiple_path, char *av, t_pipex *pipex)
 		free(command);
 		i++;
 	}
-	pipex_error_free("Wrong command.", pipex);
 	return (NULL);
 }
 
@@ -51,6 +50,8 @@ void	parse_args(t_pipex *pipex)
 	{
 		pipex->cmd_full[i] = find_command(pipex->cmd_paths,
 				pipex->args_paths[i][0], pipex);
+		if (pipex->cmd_full[i] == NULL)
+			pipex_error_free("Wrong command.", pipex);
 		i++;
 	}
 }

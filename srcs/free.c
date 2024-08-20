@@ -6,7 +6,7 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 02:04:46 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/20 13:47:27 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/08/20 15:35:07 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_free_tab(char **tab)
 {
 	size_t	i;
 
+	if (tab == NULL)
+		return ;
 	i = INDEX_START;
 	while (tab[i])
 	{
@@ -25,21 +27,16 @@ void	ft_free_tab(char **tab)
 	free(tab);
 }
 
-void	ft_free_2d_tab(char ***tab)
+void	ft_free_3d_tab(char ***tab)
 {
 	size_t	i;
-	size_t	j;
 
-	i = INDEX_START;
-	while (tab[i])
+	if (tab == NULL)
+		return ;
+	i = 0;
+	while (tab[i] != NULL)
 	{
-		j = INDEX_START;
-		while (tab[i][j])
-		{
-			free(tab[i][j]);
-			j++;
-		}
-		free(tab[i]);
+		ft_free_tab(tab[i]);
 		i++;
 	}
 	free(tab);
