@@ -6,7 +6,7 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 18:32:06 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/20 19:17:29 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/08/20 19:22:29 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	exec_bonus(t_pipex *pipex, char **av, int ac)
 		dup2(pipex->in_fd, 0);
 	}
 	while (index_ARGV < ac - 2)
-		do_pipe(av[index_ARGV++], pipex);
+		child(av[index_ARGV++], pipex);
 	dup2(pipex->out_fd, 1);
 	exec(av[ac - 2], pipex);
 }
