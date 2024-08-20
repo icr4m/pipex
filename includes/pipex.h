@@ -6,7 +6,7 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 09:06:42 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/20 17:50:36 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/08/20 18:54:19 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PIPEX_H
 
 # include "../Libft/libft/includes/ft_printf.h"
+# include "../Libft/libft/includes/get_next_line_bonus.h"
 # include "../Libft/libft/includes/libft.h"
 # include "struct.h"
 # include <errno.h>
@@ -26,6 +27,7 @@
 # define INDEX_START 0
 # define INDEX_ARGV 1
 # define MIN_ARGC 5
+# define MIN_ARGC_B 6
 # define PATH_STR "PATH="
 # define PATH_AMOUNT 5
 # define SLASH_STR "/"

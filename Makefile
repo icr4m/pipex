@@ -8,9 +8,9 @@ SRCS_B = $(addprefix srcs_bonus/, check_args_bonus.c)
 MAIN_B = $(addprefix srcs_bonus/, main_bonus.c)
 
 OBJ =  $(SRCS:srcs/%.c=obj/%.o)
-OBJ_B = $(SRCS_B:srcs/%.c=obj/%.o)
+OBJ_B = $(SRCS_B:srcs_bonus/%.c=obj_b/%.o)
 OBJ_MAIN		=	$(MAIN:srcs/%.c=obj/%.o)
-OBJ_MAIN_B		=	$(MAIN_B:srcs/%.c=obj/%.o)
+OBJ_MAIN_B		=	$(MAIN_B:srcs_bonus/%.c=obj_b/%.o)
 
 ALL_OBJS		+=	$(OBJ)
 ALL_OBJS		+=	$(OBJ_B)
@@ -53,12 +53,15 @@ $(LIBFT_PATH)/libft.a:
 	@make $(MAKE_FLAGS) $(LIBFT_PATH)
 
 $(BONUS_NAME) : $(OBJ_B) $(OBJ) $(OBJ_MAIN_B)
-	@make $(MAKE_FLAGS) $(LIBFT_PATH)
 	@cc $(CFLAGS) $^ $(LIBFT_PATH)/libft.a -o $(BONUS_NAME)
+	@echo $(GREEN) "making pipex_bonus .o files" $(NO_COLOR)
 
 bonus: $(LIBFT_PATH)/libft.a $(BONUS_NAME)
 
 obj/%.o: srcs/%.c
+	@cc $(CFLAGS) $(INCLUDES_OPT) -c $< -o $@
+
+obj_b/%.o: srcs_bonus/%.c
 	@cc $(CFLAGS) $(INCLUDES_OPT) -c $< -o $@
 
 norm:
