@@ -6,7 +6,7 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 09:06:42 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/20 15:31:29 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/08/20 17:50:36 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define SLASH_STR "/"
 # define SPACE_CHAR ' '
 # define TWO_DOTS ':'
+# define HERE_DOC_STR "here_doc"
 
 // check args
 void	check_args(int ac, char **av, t_pipex *pipex);
@@ -54,5 +55,11 @@ void	parse_args(t_pipex *pipex);
 
 // parse cmds
 void	parse_cmds(char **av, char **envp, t_pipex *pipex);
+
+////////////////////////////////////////////////////////////////////////////
+//                       BONUS                                            //
+////////////////////////////////////////////////////////////////////////////
+
+void	check_args_bonus(int ac, char **av, t_pipex *pipex);
 
 #endif
