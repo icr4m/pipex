@@ -2,7 +2,6 @@
 *.txt
 pipex
 pipex3
-obj/
 in
 out
 *.sh
