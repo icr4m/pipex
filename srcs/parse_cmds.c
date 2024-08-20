@@ -6,7 +6,7 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 18:45:00 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/20 16:07:10 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/08/20 17:05:17 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ static void	get_command(char **av, char **envp, t_pipex *pipex)
 	size_t	i;
 
 	i = INDEX_START;
-	pipex->args_paths = (char ***)malloc(pipex->cmd_count * sizeof(char **));
+	pipex->args_paths = (char ***)malloc(pipex->cmd_count + 3
+			* sizeof(char **));
 	if (!pipex->args_paths)
 		pipex_error_free("malloc failed", pipex);
 	while (i < pipex->cmd_count)
@@ -41,6 +42,7 @@ static void	get_command(char **av, char **envp, t_pipex *pipex)
 			pipex_error_free("ft_split failed", pipex);
 		i++;
 	}
+	pipex->args_paths[i] = NULL;
 }
 
 void	parse_cmds(char **av, char **envp, t_pipex *pipex)
