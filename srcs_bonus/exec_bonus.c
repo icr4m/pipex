@@ -6,7 +6,7 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 18:32:06 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/21 16:36:36 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/08/21 16:39:58 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static void	child_bonus(int index_cmd, t_pipex *pipex)
 		close(pipe_fd[1]);
 		dup2(pipe_fd[0], STDIN_FILENO);
 		close(pipe_fd[0]);
+		waitpid(pid, NULL, 0);
 	}
 }
 
