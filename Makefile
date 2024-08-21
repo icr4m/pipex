@@ -4,7 +4,7 @@ BONUS_NAME = pipex_bonus
 SRCS = $(addprefix srcs/, check_args.c errors.c exec.c free.c init_pipex.c parse_args.c parse_cmds.c)
 MAIN = $(addprefix srcs/, main.c)
 
-SRCS_B = $(addprefix srcs_bonus/, check_args_bonus.c)
+SRCS_B = $(addprefix srcs_bonus/, check_args_bonus.c exec_bonus.c here_doc.c)
 MAIN_B = $(addprefix srcs_bonus/, main_bonus.c)
 
 OBJ =  $(SRCS:srcs/%.c=obj/%.o)
