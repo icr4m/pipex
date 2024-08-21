@@ -6,7 +6,7 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 03:52:29 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/21 09:04:11 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/08/21 09:12:12 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	check_args(int ac, char **av, t_pipex *pipex)
 		pipex_error("Permission denined on file1");
 	if (access(av[4], F_OK) != -1)
 	{
-		if (access(av[4], O_WRONLY | O_CREAT | O_TRUNC) == -1)
+		if (access(av[4], W_OK) == -1)
 			pipex_error("Permission denied on file2");
 	}
 	pipex->here_doc = 0;
