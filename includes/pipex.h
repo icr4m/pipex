@@ -6,7 +6,7 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 09:06:42 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/21 07:33:40 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/08/21 15:18:43 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,9 @@ void	check_args_bonus(int ac, char **av, t_pipex *pipex);
 
 // exec bpnus
 void	exec_bonus(t_pipex *pipex, char **av, int ac);
+
+// free
+void	exit_and_free(t_pipex *pipex);
 
 // here doc
 void	exec_here_doc(t_pipex *pipex, char **av);

@@ -4,7 +4,7 @@ BONUS_NAME = pipex_bonus
 SRCS = $(addprefix srcs/, check_args.c errors.c exec.c free.c init_pipex.c parse_args.c parse_cmds.c)
 MAIN = $(addprefix srcs/, main.c)
 
-SRCS_B = $(addprefix srcs_bonus/, check_args_bonus.c exec_bonus.c here_doc.c)
+SRCS_B = $(addprefix srcs_bonus/, check_args_bonus.c exec_bonus.c free.c here_doc.c)
 MAIN_B = $(addprefix srcs_bonus/, main_bonus.c)
 
 OBJ =  $(SRCS:srcs/%.c=obj/%.o)
@@ -28,7 +28,7 @@ INCS_LIBFT = $(addprefix Libft/libft/includes/, ft_printf.h get_next_line_bonus.
 ALL_INCS += $(INCS)
 ALL_INCS += $(INCS_LIBFT)
 
-CCFLAGS = -Wall -Wextra -Werror
+CCFLAGS = -Wall -Wextra -Werror -g3
 
 MAKE_FLAGS		+=	--no-print-directory
 MAKE_FLAGS		+=	-C
