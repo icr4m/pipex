@@ -6,7 +6,7 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 18:32:06 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/21 07:33:51 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/08/21 11:21:09 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static void	child_bonus(int index_cmd, t_pipex *pipex)
 	pid_t	pid;
 	int		pipe_fd[2];
 
+	printf("test\n");
 	if (pipe(pipe_fd) == -1)
 		pipex_error_free("Pipe Failed", pipex);
 	pid = fork();
@@ -57,7 +58,7 @@ void	exec_bonus(t_pipex *pipex, char **av, int ac)
 			pipex_error_free("open failed", pipex);
 		dup2(pipex->in_fd, 0);
 	}
-	while (index_ARGV < ac - 2 - pipex->here_doc)
+	while (index_ARGV++ < ac - 2 - pipex->here_doc)
 		child_bonus(index_ARGV, pipex);
 	dup2(pipex->out_fd, 1);
 	execve(pipex->cmd_full[index_ARGV], pipex->args_paths[index_ARGV], NULL);
