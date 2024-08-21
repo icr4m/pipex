@@ -6,7 +6,7 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 03:32:19 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/21 08:16:36 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/08/21 09:54:45 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	parse_args(t_pipex *pipex)
 	size_t	i;
 
 	i = INDEX_START;
-	pipex->cmd_full = (char **)malloc(pipex->cmd_count + 3 * sizeof(char *));
+	pipex->cmd_full = (char **)malloc(pipex->cmd_count * sizeof(char *));
 	if (!pipex->cmd_full)
 		pipex_error_free("malloc failed", pipex);
 	while (i < pipex->cmd_count)
