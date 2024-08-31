@@ -6,7 +6,7 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 22:31:01 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/20 17:15:46 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/08/31 15:38:18 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ static void	parent(t_pipex *pipex, char **av, int *pipe_fd)
 	fd = open(av[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	if (fd == -1)
 		pipex_error_free("open failed", pipex);
-	dup2(fd, 1);
+	dup2(fd, STDOUT_FILENO);
 	close(fd);
-	dup2(pipe_fd[0], 0);
+	dup2(pipe_fd[0], STDIN_FILENO);
 	close(pipe_fd[1]);
 	close(pipe_fd[0]);
 	execve(pipex->cmd_full[1], pipex->args_paths[1], NULL);

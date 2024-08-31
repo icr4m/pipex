@@ -6,7 +6,7 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 18:32:06 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/21 16:39:58 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/08/31 16:31:20 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ static void	child_bonus(int index_cmd, t_pipex *pipex)
 
 void	exec_bonus(t_pipex *pipex, char **av, int ac)
 {
-	int	index_ARGV;
+	int	index_argv;
 
-	index_ARGV = INDEX_START;
+	index_argv = INDEX_START;
 	if (pipex->here_doc == 1)
 	{
 		pipex->out_fd = open(av[ac - 1], O_WRONLY | O_CREAT | O_APPEND, 0777);
@@ -61,13 +61,13 @@ void	exec_bonus(t_pipex *pipex, char **av, int ac)
 		pipex->out_fd = open(av[ac - 1], O_WRONLY | O_CREAT | O_TRUNC, 0777);
 		if (pipex->out_fd == -1)
 			pipex_error_free("open failed", pipex);
-		dup2(pipex->in_fd, 0);
+		dup2(pipex->in_fd, STDIN_FILENO);
 	}
-	while (index_ARGV < ac - 4 - pipex->here_doc)
-		child_bonus(index_ARGV++, pipex);
+	while (index_argv < ac - 4 - pipex->here_doc)
+		child_bonus(index_argv++, pipex);
 	if (pipex->here_doc == 0)
 		close(pipex->in_fd);
-	close(pipex->out_fd);
 	dup2(pipex->out_fd, STDOUT_FILENO);
-	execve(pipex->cmd_full[index_ARGV], pipex->args_paths[index_ARGV], NULL);
+	close(pipex->out_fd);
+	execve(pipex->cmd_full[index_argv], pipex->args_paths[index_argv], NULL);
 }

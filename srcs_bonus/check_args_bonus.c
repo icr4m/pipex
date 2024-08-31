@@ -6,7 +6,7 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 17:22:07 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/21 09:42:54 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/08/31 16:10:53 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ void	check_args_bonus(int ac, char **av, t_pipex *pipex)
 			pipex_error("Permission denined on file1");
 	}
 	if (pipex->here_doc == 1 && ac < MIN_ARGC_B)
-		pipex_error("Usage : ./pipex_bonus here_doc LIMITER cmd1 ... cmd2 file2");
+		pipex_error("Usage : ./pipex_bonus here_doc LIMITER cmd1 ... \
+		cmd2 file2");
 }
