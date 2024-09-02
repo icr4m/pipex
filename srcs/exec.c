@@ -6,7 +6,7 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 22:31:01 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/31 15:38:18 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/09/02 11:10:29 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static void	parent(t_pipex *pipex, char **av, int *pipe_fd)
 	dup2(pipe_fd[0], STDIN_FILENO);
 	close(pipe_fd[1]);
 	close(pipe_fd[0]);
+	wait(NULL);
 	execve(pipex->cmd_full[1], pipex->args_paths[1], NULL);
 }
 

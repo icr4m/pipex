@@ -6,7 +6,7 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 18:32:06 by ijaber            #+#    #+#             */
-/*   Updated: 2024/08/31 16:31:20 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/09/02 11:16:04 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,15 @@ static void	child_bonus(int index_cmd, t_pipex *pipex)
 	}
 }
 
+static void	exec_bonus_final(t_pipex *pipex, int index_argv, int ac)
+{
+	if (pipex->here_doc == 0)
+		close(pipex->in_fd);
+	dup2(pipex->out_fd, STDOUT_FILENO);
+	close(pipex->out_fd);
+	execve(pipex->cmd_full[index_argv], pipex->args_paths[index_argv], NULL);
+}
+
 void	exec_bonus(t_pipex *pipex, char **av, int ac)
 {
 	int	index_argv;
@@ -67,7 +76,5 @@ void	exec_bonus(t_pipex *pipex, char **av, int ac)
 		child_bonus(index_argv++, pipex);
 	if (pipex->here_doc == 0)
 		close(pipex->in_fd);
-	dup2(pipex->out_fd, STDOUT_FILENO);
-	close(pipex->out_fd);
-	execve(pipex->cmd_full[index_argv], pipex->args_paths[index_argv], NULL);
+	exec_bonus_final(pipex, index_argv, ac);
 }
