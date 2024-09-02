@@ -7,10 +7,10 @@ MAIN = $(addprefix srcs/, main.c)
 SRCS_B = $(addprefix srcs_bonus/, check_args_bonus.c exec_bonus.c free.c here_doc.c)
 MAIN_B = $(addprefix srcs_bonus/, main_bonus.c)
 
-OBJ =  $(SRCS:srcs/%.c=obj/%.o)
-OBJ_B = $(SRCS_B:srcs_bonus/%.c=obj_b/%.o)
-OBJ_MAIN		=	$(MAIN:srcs/%.c=obj/%.o)
-OBJ_MAIN_B		=	$(MAIN_B:srcs_bonus/%.c=obj_b/%.o)
+OBJ =  $(SRCS:.c=.o)
+OBJ_B = $(SRCS_B:.c=.o)
+OBJ_MAIN		=	$(MAIN:.c=.o)
+OBJ_MAIN_B		=	$(MAIN_B:.c=.o)
 
 ALL_OBJS		+=	$(OBJ)
 ALL_OBJS		+=	$(OBJ_B)
@@ -58,11 +58,8 @@ $(BONUS_NAME) : $(OBJ_B) $(OBJ) $(OBJ_MAIN_B)
 
 bonus: $(LIBFT_PATH)/libft.a $(BONUS_NAME)
 
-obj/%.o: srcs/%.c
-	@cc $(CFLAGS) $(INCLUDES_OPT) -c $< -o $@
-
-obj_b/%.o: srcs_bonus/%.c
-	@cc $(CFLAGS) $(INCLUDES_OPT) -c $< -o $@
+.c.o:
+	@cc $(CCFLAGS) $(INCLUDES_OPT) -c $< -o ${<:.c=.o}
 
 norm:
 	norminette -R CheckForbiddenSourceHeader $(ALL_SRCS)
