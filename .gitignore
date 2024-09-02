@@ -6,3 +6,4 @@ pipex3
 in
 out
 *.sh
+*.o

@@ -62,8 +62,8 @@ bonus: $(LIBFT_PATH)/libft.a $(BONUS_NAME)
 	@cc $(CCFLAGS) $(INCLUDES_OPT) -c $< -o ${<:.c=.o}
 
 norm:
-	norminette -R CheckForbiddenSourceHeader $(ALL_SRCS)
-	norminette -R CheckDefine $(ALL_INCS)
+	@norminette -R CheckForbiddenSourceHeader $(ALL_SRCS)
+	@norminette -R CheckDefine $(ALL_INCS)
 
 clean:
 	@rm -rf $(ALL_OBJS)

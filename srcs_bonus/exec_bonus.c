@@ -6,7 +6,7 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 18:32:06 by ijaber            #+#    #+#             */
-/*   Updated: 2024/09/02 11:16:04 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/09/02 11:19:57 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	child_bonus(int index_cmd, t_pipex *pipex)
 	}
 }
 
-static void	exec_bonus_final(t_pipex *pipex, int index_argv, int ac)
+static void	exec_bonus_final(t_pipex *pipex, int index_argv)
 {
 	if (pipex->here_doc == 0)
 		close(pipex->in_fd);
@@ -76,5 +76,5 @@ void	exec_bonus(t_pipex *pipex, char **av, int ac)
 		child_bonus(index_argv++, pipex);
 	if (pipex->here_doc == 0)
 		close(pipex->in_fd);
-	exec_bonus_final(pipex, index_argv, ac);
+	exec_bonus_final(pipex, index_argv);
 }
