@@ -1,26 +1,17 @@
 NAME = pipex
 BONUS_NAME = pipex_bonus
 
-SRCS = $(addprefix srcs/, check_args.c errors.c exec.c free.c init_pipex.c parse_args.c parse_cmds.c)
-MAIN = $(addprefix srcs/, main.c)
-
-SRCS_B = $(addprefix srcs_bonus/, check_args_bonus.c exec_bonus.c free.c here_doc.c)
-MAIN_B = $(addprefix srcs_bonus/, main_bonus.c)
+SRCS = $(addprefix srcs/, check_args_bonus.c errors.c exec_bonus.c free.c init_pipex.c here_doc.c parse_args.c parse_cmds.c)
+MAIN = $(addprefix srcs/, main_bonus.c)
 
 OBJ =  $(SRCS:.c=.o)
-OBJ_B = $(SRCS_B:.c=.o)
 OBJ_MAIN		=	$(MAIN:.c=.o)
-OBJ_MAIN_B		=	$(MAIN_B:.c=.o)
 
 ALL_OBJS		+=	$(OBJ)
-ALL_OBJS		+=	$(OBJ_B)
 ALL_OBJS		+=	$(OBJ_MAIN)
-ALL_OBJS		+=	$(OBJ_MAIN_B)
 
 ALL_SRCS +=	$(SRCS)
 ALL_SRCS +=	$(MAIN)
-ALL_SRCS +=	$(SRCS_B)
-ALL_SRCS +=	$(MAIN_B)
 
 INCS = $(addprefix includes/, pipex.h struct.h)
 INCS_LIBFT = $(addprefix Libft/libft/includes/, ft_printf.h get_next_line_bonus.h libft.h)
@@ -52,12 +43,6 @@ $(NAME): $(OBJ) $(OBJ_MAIN)
 $(LIBFT_PATH)/libft.a:
 	@make $(MAKE_FLAGS) $(LIBFT_PATH)
 
-$(BONUS_NAME) : $(OBJ_B) $(OBJ) $(OBJ_MAIN_B)
-	@cc $(CFLAGS) $^ $(LIBFT_PATH)/libft.a -o $(BONUS_NAME)
-	@echo $(GREEN) "making pipex_bonus .o files" $(NO_COLOR)
-
-bonus: $(LIBFT_PATH)/libft.a $(BONUS_NAME)
-
 .c.o:
 	@cc $(CCFLAGS) $(INCLUDES_OPT) -c $< -o ${<:.c=.o}
 
@@ -71,9 +56,7 @@ clean:
 	@echo $(RED) "deleting pipex .o files" $(NO_COLOR)
 
 fclean: clean
-	@rm -f $(NAME) $(BONUS_NAME)
+	@rm -f $(NAME)
 	@echo $(RED) "deleting pipex" $(NO_COLOR)
 		
 re: fclean all
-
-rb: re bonus
