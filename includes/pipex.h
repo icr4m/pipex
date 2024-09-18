@@ -6,7 +6,7 @@
 /*   By: ijaber <ijaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 09:06:42 by ijaber            #+#    #+#             */
-/*   Updated: 2024/09/10 12:06:10 by ijaber           ###   ########.fr       */
+/*   Updated: 2024/09/13 15:57:51 by ijaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,27 @@
 # define TWO_DOTS ':'
 # define HERE_DOC_STR "here_doc"
 
-// check args
-void	check_args(int ac, char **av, t_pipex *pipex);
+// check args bonus
+void	check_args_bonus(int ac, char **av, t_pipex *pipex);
 
 // errors
 void	pipex_error(char *error_message);
-void	pipex_error_free(char *error_message, t_pipex *pipex);
+void	pipex_error_free(char *error_msg, t_pipex *pipex);
 
-// exec
-void	exec(t_pipex *pipex, char **av);
+// exec bonus
+void	child_multiple(int index_cmd, t_pipex *pipex);
+void	last_child_process(t_pipex *pipex, int index_argv);
+void	exec(t_pipex *pipex, char **av, int ac);
 
 // free
-void	ft_free_tab(char **tab);
+void	ft_free_cmd(char **tab, t_pipex *pipex);
+void	exit_and_free(t_pipex *pipex);
 void	ft_free_3d_tab(char ***tab);
+void	ft_free_tab(char **tab);
+
+// heredocc
+void	handle_heredoc_pipes(int ac, char **av, char **envp, t_pipex *pipex);
+void	handle_here_doc(t_pipex *pipex, char **av);
 
 // init pipex
 void	init_pipex(t_pipex *pipex, int ac);
@@ -55,23 +63,7 @@ void	init_pipex(t_pipex *pipex, int ac);
 // parse args
 void	parse_args(t_pipex *pipex);
 
-// parse cmds
+// parse cmd
 void	parse_cmds(char **av, char **envp, t_pipex *pipex);
-
-////////////////////////////////////////////////////////////////////////////
-//                       BONUS                                            //
-////////////////////////////////////////////////////////////////////////////
-
-// check args bonus
-void	check_args_bonus(int ac, char **av, t_pipex *pipex);
-
-// exec bpnus
-void	exec_bonus(t_pipex *pipex, char **av, int ac);
-
-// free
-void	exit_and_free(t_pipex *pipex);
-
-// here doc
-void	exec_here_doc(t_pipex *pipex, char **av);
 
 #endif
